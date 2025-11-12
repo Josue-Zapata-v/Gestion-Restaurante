@@ -98,8 +98,8 @@ Antes de instalar el proyecto, asegúrate de tener instalado:
 ### 1️⃣ Clonar el Repositorio
 
 ```bash
-git clone https://github.com/Josue-Zapata-v/Gestion-Restaurante-.git
-cd Gestion-Restaurante-
+git clone https://github.com/Josue-Zapata-v/Gestion-Restaurante.git
+cd Gestion-Restaurante
 ```
 
 ### 2️⃣ Crear la Base de Datos
@@ -407,13 +407,13 @@ spring.datasource.password=${DB_PASSWORD}
 
 ## 📂 Repositorio
 
-**GitHub**: [https://github.com/Josue-Zapata-v/Gestion-Restaurante-.git](https://github.com/Josue-Zapata-v/Gestion-Restaurante-.git)
+**GitHub**: [https://github.com/Josue-Zapata-v/Gestion-Restaurante-.git](https://github.com/Josue-Zapata-v/Gestion-Restaurante.git)
 
 ### Comandos Git Útiles
 
 ```bash
 # Clonar
-git clone https://github.com/Josue-Zapata-v/Gestion-Restaurante-.git
+git clone https://github.com/Josue-Zapata-v/Gestion-Restaurante.git
 
 # Ver ramas
 git branch -a
@@ -469,9 +469,7 @@ Este proyecto fue desarrollado con fines académicos como parte de la evaluació
 
 ## 🙏 Agradecimientos
 
-- A los profesores de TECSUP por la guía en el desarrollo
-- A la comunidad de Spring Framework por la documentación
-- A Bootstrap por facilitar el diseño responsive
+- Al profesor Coello Palomino Ricardo por la guía en el desarrollo
 
 ---
 
