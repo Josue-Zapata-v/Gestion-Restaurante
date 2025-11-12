@@ -1,0 +1,113 @@
+/* style.css - Acabado UX/UI Profesional y Responsabilidad de Clases */
+
+/* --- Variables y Reset --- */
+:root {
+    --primary-color: #0d6efd;
+    --accent-color: #0b5ed7;
+    --bg-soft-brown: #f0ebe5;
+    --text-color: #333;
+    --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --input-bg: #f8f9fa; /* Fondo ligero para inputs */
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--bg-soft-brown);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Contenedor Global de la Tarjeta --- */
+.login-card {
+    max-width: 800px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* --- Estilos de la Columna de la Imagen (REVERTIDO) --- */
+/* Esta sección asegura que la columna de la imagen tenga el estilo original (fondo blanco) */
+.login-image-container {
+    background-color: var(--card-bg); /* Fondo blanco, no azul */
+    padding: 0; /* Sin padding forzado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos de la imagen para asegurar el ajuste si es necesario */
+.login-image-container .login-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0; /* Ya está redondeado por el .card */
+    box-shadow: none;
+    opacity: 1; /* Transparencia normal */
+}
+
+/* --- Título del Formulario (UX/UI Detallado) --- */
+.login-title {
+    color: var(--primary-color);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    font-size: 2rem;
+}
+
+.col-md-6 p.text-muted {
+    font-size: 0.95rem;
+    margin-bottom: 2rem !important;
+    color: #6c757d !important;
+}
+
+/* --- Estilos de Inputs (UX/UI Detallado) --- */
+.form-control-lg {
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.form-control-lg::placeholder {
+    color: #a0a0a0;
+}
+
+.form-control-lg:focus {
+    border-color: var(--primary-color);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.2);
+    outline: none;
+}
+
+/* --- Botón de Login (Acción Clave) --- */
+.btn-primary.btn-lg {
+    font-weight: 700;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+}
+
+.btn-primary.btn-lg:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary.btn-lg:active {
+    transform: translateY(2px);
+}
+
+/* --- Mensajes y Alertas --- */
+.alert {
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}

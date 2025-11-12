@@ -1,0 +1,162 @@
+<nav th:fragment="navbar" class="sidebar-nav">
+    <div class="sidebar-header">
+        <div class="logo-container">
+            <i class="bi bi-shop-window"></i>
+            <h1 class="logo-title">Sabor Gourmet</h1>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-menu">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a th:href="@{/customers/tables}" class="nav-link"
+                   th:classappend="${#strings.contains(currentPath, '/customers/tables') and !#strings.contains(currentPath, '/backoffice')} ? 'active' : ''">
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                    <span class="nav-text">Mesas</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a th:href="@{/customers/list}" class="nav-link"
+                   th:classappend="${#strings.contains(currentPath, '/customers/list') or #strings.contains(currentPath, '/customers/form')} ? 'active' : ''">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="nav-text">Clientes</span>
+                </a>
+            </li>
+
+            <li class="nav-item has-dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="backofficeDropdown"
+                   th:classappend="${#strings.contains(currentPath, '/pedidos') or
+                                    #strings.contains(currentPath, '/inventario') or
+                                    #strings.contains(currentPath, '/bitacora')} ? 'active' : ''">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span class="nav-text">Backoffice</span>
+                    <i class="bi bi-chevron-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" class="dropdown-item"
+                           th:classappend="${#strings.contains(currentPath, '/pedidos')} ? 'active' : ''">
+                            <i class="bi bi-receipt"></i>
+                            <span>Pedidos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-item"
+                           th:classappend="${#strings.contains(currentPath, '/inventario')} ? 'active' : ''">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/bitacora}" class="dropdown-item"
+                           th:classappend="${#strings.contains(currentPath, '/bitacora')} ? 'active' : ''">
+                            <i class="bi bi-shield-lock-fill"></i>
+                            <span>Bitácora (Admin)</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="sidebar-footer">
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="bi bi-person-circle"></i>
+            </div>
+            <div class="user-details">
+                <span class="user-name">Admin</span>
+                <span class="user-role">Administrador</span>
+            </div>
+        </div>
+        <form th:action="@{/logout}" method="post" style="width: 100%;">
+            <button type="submit" class="btn-logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </form>
+    </div>
+</nav>
+
+<script th:fragment="navbar-script">
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.querySelector('.sidebar-nav');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+        // Función de inicialización para establecer el estado del sidebar
+        function setInitialSidebarState() {
+            if (window.innerWidth <= 768) {
+                // Móvil: Por defecto colapsado
+                sidebar.classList.add('collapsed');
+                document.body.classList.add('sidebar-collapsed');
+            } else {
+                // Escritorio: Mantener estado por defecto (no colapsado)
+                // Aquí podrías cargar un estado guardado en localStorage si lo implementas
+            }
+        }
+
+        // Ejecutar al cargar
+        setInitialSidebarState();
+
+        // Toggle sidebar collapse
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                sidebar.classList.toggle('collapsed');
+                document.body.classList.toggle('sidebar-collapsed');
+
+                // Cerrar dropdowns al colapsar
+                if (sidebar.classList.contains('collapsed')) {
+                    document.querySelectorAll('.has-dropdown').forEach(item => {
+                        item.classList.remove('open');
+                    });
+                }
+            });
+        }
+
+        // Dropdown functionality
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // No hacer nada si el sidebar está colapsado
+                if (sidebar.classList.contains('collapsed')) {
+                    return;
+                }
+
+                const parentItem = this.closest('.has-dropdown');
+                const isOpen = parentItem.classList.contains('open');
+
+                // Cerrar otros dropdowns
+                document.querySelectorAll('.has-dropdown').forEach(item => {
+                    if (item !== parentItem) {
+                        item.classList.remove('open');
+                    }
+                });
+
+                // Toggle este dropdown
+                parentItem.classList.toggle('open');
+            });
+        });
+
+        // Mantener dropdown abierto si hay un item activo
+        const activeDropdownItem = document.querySelector('.dropdown-item.active');
+        if (activeDropdownItem) {
+            const parentDropdown = activeDropdownItem.closest('.has-dropdown');
+            if (parentDropdown) {
+                parentDropdown.classList.add('open');
+
+                // Asegurar que el toggle también se marque como activo
+                const dropdownToggle = parentDropdown.querySelector('.dropdown-toggle');
+                if (dropdownToggle && !dropdownToggle.classList.contains('active')) {
+                    dropdownToggle.classList.add('active');
+                }
+            }
+        }
+    });
+</script>
