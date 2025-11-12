@@ -157,26 +157,6 @@ Started EvalS12Application in X.XXX seconds
 | `CustomerController` <br> `/customers/list` | CRUD y gestión del estado (Activo/Inactivo) de los clientes registrados |
 | `AdminController` <br> `/admin/bitacora` | Vista protegida para el registro de auditoría y trazabilidad de acciones |
 
-### Arquitectura del Proyecto
-
-```
-src/main/java/com/tecsup/
-├── config/              # Configuraciones de Spring Security
-├── controller/          # Controladores MVC
-├── model/              # Entidades JPA
-├── repository/         # Interfaces de acceso a datos
-├── service/            # Lógica de negocio
-├── aspect/             # Aspectos AOP (Auditoría)
-└── dto/                # Objetos de transferencia de datos
-
-src/main/resources/
-├── templates/          # Vistas Thymeleaf
-│   ├── fragments/      # Componentes reutilizables (navbar)
-│   └── customers/      # Vistas del módulo de clientes
-├── static/             # Recursos estáticos (CSS, JS, imágenes)
-└── application.properties
-```
-
 ---
 
 ## 📊 Módulos Implementados
@@ -188,7 +168,7 @@ Gestionar la atención a clientes y el control de disponibilidad de mesas en tie
 
 #### 📋 Proceso de Negocio
 
-1. **Registro de Cliente** (opcional)
+1. **Registro de Cliente** 
    - El cliente llega al restaurante
    - El recepcionista/mozo registra al cliente con su DNI, nombres, teléfono, etc.
 
