@@ -34,14 +34,16 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/", true)
+                        .loginPage("/login")        // Ruta del formulario de login personalizado
+                        .defaultSuccessUrl("/", true) // Redirección al inicio después de un login exitoso
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .permitAll()
                         .logoutSuccessUrl("/login?logout")
                 );
+
+        // http.csrf(csrf -> csrf.disable());
 
         return http.build();
     }

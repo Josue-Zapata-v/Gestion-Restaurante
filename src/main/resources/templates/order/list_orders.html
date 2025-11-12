@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="main-content">
+    <div class="container mt-5">
+        <h2>Gestión de Pedidos</h2>
+
+        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createOrderModal">
+            <i class="bi bi-cart-plus"></i> Crear Nuevo Pedido
+        </button>
+
+        <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+        <h3>Pedidos Activos</h3>
+    </div>
+</div>
+
+<div class="modal fade" id="createOrderModal" tabindex="-1" aria-labelledby="createOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{/orders/create}" th:object="${newOrder}" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createOrderModalLabel">Asignar Mesa y Crear Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="table" class="form-label">Mesa a Asignar</label>
+                        <select id="table" th:field="*{table}" class="form-select" required>
+                            <option value="">-- Seleccione una mesa disponible --</option>
+                            <option th:each="table : ${availableTables}"
+                                    th:value="${table.idTable}"
+                                    th:text="${'Mesa ' + table.number + ' (Cap. ' + table.capacity + ')'}">
+                            </option>
+                        </select>
+                        <small class="text-muted">Solo se muestran mesas disponibles.</small>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Crear Pedido e Iniciar Servicio</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

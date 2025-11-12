@@ -1,5 +1,6 @@
 package com.tecsup.Eval_S12.service;
 
+import com.tecsup.Eval_S12.entity.Customer;
 import com.tecsup.Eval_S12.entity.Tables;
 import com.tecsup.Eval_S12.entity.Tables.TableStatus;
 import com.tecsup.Eval_S12.repository.TableRepository;
@@ -47,5 +48,24 @@ public class TableService {
             tableRepository.save(new Tables(null, 4, 8, TableStatus.DISPONIBLE));
             tableRepository.save(new Tables(null, 5, 2, TableStatus.DISPONIBLE));
         }
+    }
+    @Transactional
+    public Tables assignTableToCustomer(Long idTable, Customer customer) {
+        // Asegúrate de que TableRepository esté inyectado y use la entidad Tables.
+        Tables table = tableRepository.findById(idTable)
+                .orElseThrow(() -> new RuntimeException("Mesa ID " + idTable + " no encontrada."));
+
+        // 2. Corregido el Enum: 'TablseStatus.AVAILABLE' -> 'Tables.TableStatus.DISPONIBLE'
+        // Asumo que tu Enum está en español y anidado.
+        if (table.getStatus() != Tables.TableStatus.DISPONIBLE) {
+            throw new RuntimeException("La mesa " + table.getNumber() + " no está disponible para asignación.");
+        }
+
+        // 3. Corregido el Enum: 'TableStatus.OCCUPIED' -> 'Tables.TableStatus.OCUPADA'
+        table.setStatus(Tables.TableStatus.OCUPADA);
+
+        // ... (Comentarios de lógica simplificada se mantienen) ...
+
+        return tableRepository.save(table);
     }
 }

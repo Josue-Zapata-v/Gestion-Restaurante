@@ -2,6 +2,7 @@ package com.tecsup.Eval_S12.controller;
 
 import com.tecsup.Eval_S12.entity.Customer;
 import com.tecsup.Eval_S12.service.CustomerService;
+import com.tecsup.Eval_S12.service.TableService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +14,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CustomerController {
 
     private final CustomerService customerService;
+    private final TableService tableService; // 👈 Inyección
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, TableService tableService) {
         this.customerService = customerService;
+        this.tableService = tableService; // Asignación
     }
 
     @GetMapping("/list")
     public String listCustomers(Model model, HttpServletRequest request) {
         model.addAttribute("customers", customerService.listCustomers());
         model.addAttribute("customer", new Customer());
+        model.addAttribute("availableTables", tableService.listAvailableTables());
         model.addAttribute("currentPath", request.getRequestURI());
         return "customer/list_customer";
     }
