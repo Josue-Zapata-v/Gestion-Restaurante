@@ -1,4 +1,4 @@
-# 🍽️ Sistema de Gestión de Restaurante - Sabor Gourmet
+<img width="1918" height="978" alt="loginrestaurant" src="https://github.com/user-attachments/assets/2d240e1f-dc0a-4f84-bd7e-19732137f808" /># 🍽️ Sistema de Gestión de Restaurante - Sabor Gourmet
 
 Sistema empresarial de gestión integral para el restaurante "Sabor Gourmet", desarrollado con **Spring Boot**, implementando **Programación Orientada a Aspectos (AOP)** y **Spring Security** para garantizar seguridad, auditoría y trazabilidad en todas las operaciones.
 
@@ -313,28 +313,28 @@ Esta vista muestra:
 ## 🖼️ Capturas de Pantalla
 
 ### Login
-![Login](C:\Users\LENOVO\Downloads\loginrestaurant.png)
+![Login](https://github.com/user-attachments/assets/5b6c0a40-1f27-4221-95b9-6515e56c71dd)
 
 *Sistema de autenticación con diseño elegante y profesional*
 
 ---
 
 ### Dashboard - Gestión de Mesas
-![Gestión de Mesas]("C:\Users\LENOVO\Downloads\mesasrestaurant.png")
+![Gestión de Mesas](https://github.com/user-attachments/assets/b4c866f5-8465-42f8-b873-d63e23372875)
 
 *Vista en tiempo real del estado de todas las mesas con acciones rápidas*
 
 ---
 
 ### Gestión de Clientes
-![Gestión de Clientes]("C:\Users\LENOVO\Downloads\clientesrestaurant.png")
+![Gestión de Clientes](https://github.com/user-attachments/assets/32d25c2a-2e6f-47f9-aae8-238dd6ff0e9a)
 
 *Tabla interactiva para administrar clientes registrados*
 
 ---
 
 ### Bitácora de Auditoría
-![Bitácora]("C:\Users\LENOVO\Downloads\bitacorarestaurant.png")
+![Bitácora](https://github.com/user-attachments/assets/f0661028-5f1c-4c00-848c-559e5e5581bf)
 
 *Registro completo de todas las operaciones del sistema*
 
