@@ -1,4 +1,4 @@
-<img width="1918" height="978" alt="loginrestaurant" src="https://github.com/user-attachments/assets/2d240e1f-dc0a-4f84-bd7e-19732137f808" /># 🍽️ Sistema de Gestión de Restaurante - Sabor Gourmet
+# 🍽️ Sistema de Gestión de Restaurante - Sabor Gourmet
 
 Sistema empresarial de gestión integral para el restaurante "Sabor Gourmet", desarrollado con **Spring Boot**, implementando **Programación Orientada a Aspectos (AOP)** y **Spring Security** para garantizar seguridad, auditoría y trazabilidad en todas las operaciones.
 
