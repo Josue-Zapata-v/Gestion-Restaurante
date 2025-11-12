@@ -23,8 +23,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // Relación Muchos a Muchos con Role
-    @ManyToMany(fetch = FetchType.EAGER) // Carga los roles al cargar el usuario
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),

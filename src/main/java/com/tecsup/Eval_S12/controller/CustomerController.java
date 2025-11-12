@@ -2,7 +2,7 @@ package com.tecsup.Eval_S12.controller;
 
 import com.tecsup.Eval_S12.entity.Customer;
 import com.tecsup.Eval_S12.service.CustomerService;
-import jakarta.servlet.http.HttpServletRequest; // 👈 NECESARIO
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +19,10 @@ public class CustomerController {
     }
 
     @GetMapping("/list")
-    public String listCustomers(Model model, HttpServletRequest request) { // 👈 Agregamos HttpServletRequest
+    public String listCustomers(Model model, HttpServletRequest request) {
         model.addAttribute("customers", customerService.listCustomers());
-        model.addAttribute("currentPath", request.getRequestURI()); // 👈 Pasamos la URL actual
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("currentPath", request.getRequestURI());
         return "customer/list_customer";
     }
 
@@ -35,7 +36,7 @@ public class CustomerController {
             customer = new Customer();
         }
         model.addAttribute("customer", customer);
-        model.addAttribute("currentPath", request.getRequestURI()); // 👈 Pasamos la URL actual
+        model.addAttribute("currentPath", request.getRequestURI());
         return "customer/form_customer";
     }
 

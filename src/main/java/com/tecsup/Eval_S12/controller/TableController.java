@@ -2,7 +2,7 @@ package com.tecsup.Eval_S12.controller;
 
 import com.tecsup.Eval_S12.entity.Tables.TableStatus;
 import com.tecsup.Eval_S12.service.TableService;
-import jakarta.servlet.http.HttpServletRequest; // 👈 importa esto
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +20,9 @@ public class TableController {
     }
 
     @GetMapping("")
-    public String listTables(Model model, HttpServletRequest request) { // 👈 agrega el request aquí
+    public String listTables(Model model, HttpServletRequest request) {
         model.addAttribute("tables", tableService.listAllTables());
-        model.addAttribute("currentPath", request.getRequestURI()); // 👈 pasamos la URL actual
+        model.addAttribute("currentPath", request.getRequestURI());
         return "table/list_tables";
     }
 

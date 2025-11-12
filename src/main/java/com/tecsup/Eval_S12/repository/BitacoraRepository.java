@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BitacoraRepository extends JpaRepository<Bitacora, Long> {
-    // Métodos de consulta personalizados si son necesarios en el futuro
 }

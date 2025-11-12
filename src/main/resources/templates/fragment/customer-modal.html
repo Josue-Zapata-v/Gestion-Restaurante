@@ -1,0 +1,42 @@
+<div th:fragment="customer-form-modal (customer)" class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form th:action="@{/customers/save}" th:object="${customer}" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customerModalLabel">
+                        <i class="bi bi-person-plus-fill me-2"></i>
+                        Registrar Nuevo Cliente
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="hidden" th:field="*{idCustomer}">
+
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="text" th:field="*{dni}" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombres" class="form-label">Nombres</label>
+                        <input type="text" th:field="*{name}" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" th:field="*{lastname}" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-register-customer">
+                        <i class="bi bi-floppy-fill me-1"></i> Guardar Cliente
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

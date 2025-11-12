@@ -27,17 +27,14 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (rolRepository.count() == 0) {
-            // 1. Crear Roles si no existen
             Role admin = rolRepository.save(new Role(null, "ADMIN"));
             Role mozo = rolRepository.save(new Role(null, "MOZO"));
             Role cocinero = rolRepository.save(new Role(null, "COCINERO"));
             Role cajero = rolRepository.save(new Role(null, "CAJERO"));
 
             if (userRepository.findByUsername("admin").isEmpty()) {
-                // 2. Crear User ADMIN (Contraseña: admin)
                 User adminUser = new User();
                 adminUser.setUsername("admin");
-                // La contraseña se cifra con BCrypt
                 adminUser.setPassword(passwordEncoder.encode("admin"));
                 adminUser.setRoles(Stream.of(admin, mozo, cocinero, cajero).collect(Collectors.toSet()));
                 userRepository.save(adminUser);
@@ -47,3 +44,4 @@ public class DataLoader implements CommandLineRunner {
         }
     }
 }
+

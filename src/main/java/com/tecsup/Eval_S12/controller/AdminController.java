@@ -5,26 +5,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.tecsup.Eval_S12.service.AuditService;
-import jakarta.servlet.http.HttpServletRequest; // 👈 1. Importar
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/admin") // Ruta protegida solo para ADMIN
+@RequestMapping("/admin")
 public class AdminController {
 
-    // Inyectamos el servicio de Auditoría
     private final AuditService auditService;
 
     public AdminController(AuditService auditService) {
         this.auditService = auditService;
     }
 
-    /**
-     * Muestra el listado completo de la Bitácora.
-     */
+
     @GetMapping("/bitacora")
-    public String listBitacoraRecords(Model model, HttpServletRequest request) { // 👈 2. Agregar HttpServletRequest
+    public String listBitacoraRecords(Model model, HttpServletRequest request) {
         model.addAttribute("registros", auditService.listBitacoraRecords());
-        model.addAttribute("currentPath", request.getRequestURI()); // 👈 3. Pasar la URL al modelo
+        model.addAttribute("currentPath", request.getRequestURI());
         return "admin/list_bitacora";
     }
 

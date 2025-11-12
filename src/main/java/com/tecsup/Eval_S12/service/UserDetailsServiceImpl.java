@@ -25,7 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User no encontrado con username: " + username));
 
-        // Convierte los Roles del user en autoridades de Spring Security
         Set<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(rol -> new SimpleGrantedAuthority(rol.getName()))
                 .collect(Collectors.toSet());

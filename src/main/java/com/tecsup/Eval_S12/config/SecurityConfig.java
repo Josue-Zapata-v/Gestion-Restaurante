@@ -12,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // Define el codificador de contraseñas (BCrypt) para cumplir con RNF1
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -29,24 +28,20 @@ public class SecurityConfig {
                         .requestMatchers("/ventas/**").hasAnyAuthority("CAJERO", "ADMIN")
                         .requestMatchers("/inventario/**").hasAuthority("ADMIN")
 
-                        // Permite el acceso libre a la página de login y recursos estáticos
                         .requestMatchers("/login", "/css/**", "/js/**", "/images/**", "/").permitAll()
 
                         // Cualquier otra ruta requiere autenticación
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")        // Ruta del formulario de login personalizado
-                        .defaultSuccessUrl("/", true) // Redirección al inicio después de un login exitoso
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .permitAll()
                         .logoutSuccessUrl("/login?logout")
                 );
-
-        // Deshabilita CSRF para simplificar (considerar habilitar en producción)
-        // http.csrf(csrf -> csrf.disable());
 
         return http.build();
     }

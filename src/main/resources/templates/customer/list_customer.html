@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/style-dashboard.css}"> <link rel="stylesheet" th:href="@{/css/style-customer.css}"> </head>
 <body>
 <div th:replace="~{fragment/navbar :: navbar}"></div>
+<div th:replace="~{fragment/navbar :: navbar}"></div>
 
 <div class="main-content">
     <div class="customer-main-container">
@@ -71,7 +72,7 @@
 
     </div>
 </div>
-
+<script th:replace="~{fragment/navbar :: navbar-script}"></script>
 <script th:replace="~{fragment/navbar :: navbar-script}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

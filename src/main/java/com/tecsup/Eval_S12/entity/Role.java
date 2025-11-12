@@ -16,7 +16,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Define los roles exactos: ADMIN, MOZO, COCINERO, CAJERO
     @Column(unique = true, nullable = false)
     private String name;
 }
